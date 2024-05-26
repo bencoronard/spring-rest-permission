@@ -4,3 +4,10 @@
 .error {
   color: red;
 }
+.black {
+  color: black;
+}
+.flexHorizontal {
+  display: flex;
+  flex-direction: row;
+}
