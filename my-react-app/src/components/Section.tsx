@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import styles from '../styles/appStyles.module.css';
 
 type SectionProps = { title?: string; children: ReactNode };
 
@@ -7,7 +8,7 @@ export const Section = ({ children, title = 'ABC' }: SectionProps) => {
     <>
       <section>
         <h2>{title}</h2>
-        <div>{children}</div>
+        <div className={styles.error}>{children}</div>
       </section>
     </>
   );

@@ -3,6 +3,7 @@ import { Heading } from './components/Heading';
 import { Section } from './components/Section';
 import { Counter } from './components/Counter';
 import { List } from './components/List';
+import { Form } from './components/Form';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +19,7 @@ function App() {
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint,
         obcaecati?
       </Section>
+      <Form />
       <Counter setCount={setCount}>Count: {count}</Counter>
       <List items={myList} render={render}></List>
     </>

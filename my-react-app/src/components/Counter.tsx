@@ -18,10 +18,10 @@ export const Counter = ({ setCount, children }: CounterProps) => {
     <>
       <h1>{children}</h1>
       <button className="red" onClick={incCount}>
-        +++
+        +
       </button>
       <button className="red" onClick={decCount}>
-        ---
+        -
       </button>
     </>
   );
