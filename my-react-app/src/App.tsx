@@ -4,6 +4,10 @@ import { Section } from './components/Section';
 import { Counter } from './components/Counter';
 import { List } from './components/List';
 import { Form } from './components/Form';
+import { LifeCycleDemo } from './components/LifeCycleDemo';
+import { RefDemo } from './components/RefDemo';
+import { InputParent } from './components/InputParent';
+import { ForwardInputParent } from './components/ForwardInputParent';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,6 +26,10 @@ function App() {
       <Form />
       <Counter setCount={setCount}>Count: {count}</Counter>
       <List items={myList} render={render}></List>
+      <LifeCycleDemo user="Mr. Bond" />
+      <RefDemo />
+      <InputParent />
+      <ForwardInputParent />
     </>
   );
 }
