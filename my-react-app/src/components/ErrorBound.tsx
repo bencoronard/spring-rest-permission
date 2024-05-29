@@ -1,6 +1,7 @@
-import React from "react";
+import React from 'react';
+import styles from '../styles/appStyles.module.css';
 
-type ErrorBoundProps = {};
+type ErrorBoundProps = { children: React.ReactNode };
 type ErrorBoundState = {
   hasError: boolean;
 };
@@ -17,13 +18,14 @@ export class ErrorBound extends React.Component<
     };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: Error) {
     return { hasError: true };
   }
 
   render() {
-    return <div>ErrorBound</div>;
+    if (this.state.hasError) {
+      return <h1 className={styles.error}>Something went wrong</h1>;
+    }
+    return <>{this.props.children}</>;
   }
 }
-
-export default ErrorBound;

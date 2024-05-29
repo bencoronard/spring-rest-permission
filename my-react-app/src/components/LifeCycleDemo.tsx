@@ -15,14 +15,14 @@ export class LifeCycleDemo extends React.Component<
       message: 'Greetings',
     };
 
-    console.log('LifeCycle constructed');
+    // console.log('LifeCycle constructed');
   }
 
   static getDerivedStateFromProps(
     props: LifeCycleDemoProps,
     state: LifeCycleDemoState
   ) {
-    console.log('LifeCycle gotDerivedStateFromProps');
+    // console.log('LifeCycle gotDerivedStateFromProps');
     return null;
   }
 
@@ -31,7 +31,7 @@ export class LifeCycleDemo extends React.Component<
     nextState: Readonly<LifeCycleDemoState>,
     nextContext: any
   ): boolean {
-    console.log('LifeCycle shouldComponentUpdated');
+    // console.log('LifeCycle shouldComponentUpdated');
     return true;
   }
 
@@ -39,7 +39,7 @@ export class LifeCycleDemo extends React.Component<
     prevProps: Readonly<LifeCycleDemoProps>,
     prevState: Readonly<LifeCycleDemoState>
   ) {
-    console.log('LifeCycle gotSnapshotBeforeUpdate');
+    // console.log('LifeCycle gotSnapshotBeforeUpdate');
     return null;
   }
 
@@ -48,19 +48,19 @@ export class LifeCycleDemo extends React.Component<
     prevState: Readonly<LifeCycleDemoState>,
     snapshot?: any
   ): void {
-    console.log('LifeCycle componentHadUpdated');
+    // console.log('LifeCycle componentHadUpdated');
   }
 
   componentDidMount(): void {
-    console.log('LifeCycle componentHadMounted');
+    // console.log('LifeCycle componentHadMounted');
   }
 
   componentWillUnmount(): void {
-    console.log('LifeCycle componentWouldUnmount');
+    // console.log('LifeCycle componentWouldUnmount');
   }
 
   render() {
-    console.log('LifeCycle rendered');
+    // console.log('LifeCycle rendered');
     return (
       <>
         <h1>
