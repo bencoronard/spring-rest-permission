@@ -16,6 +16,8 @@ body {
   font-weight: 300;
   background-color: navy;
   color: gold;
+  display: flex;
+  gap: 5em;
 }
 
 .red {

@@ -16,6 +16,10 @@ import ClickCounter from './components/ClickCounter';
 import CounterClass from './components/CounterClass';
 import HoverCounterRender from './components/HoverCounterRender';
 import ClickCounterRender from './components/ClickCounterRender';
+import { CustomContextProvider } from './components/withContext';
+import ContextConsumer from './components/ContextConsumer';
+import HttpComponent from './components/HttpComponent';
+import HttpForm from './components/HttpForm';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -44,7 +48,7 @@ function App() {
         <ErrorProne throwError={false} />
       </ErrorBound>
       <HoverCounter initial={0} />
-      <ClickCounter name="Mr. Bene" />
+      <ClickCounter name="Mr. Bourne" />
       <ClickCounter />
       <CounterClass
         inital={7}
@@ -62,6 +66,11 @@ function App() {
           );
         }}
       />
+      <CustomContextProvider value="Non-default">
+        <ContextConsumer />
+      </CustomContextProvider>
+      <HttpComponent />
+      <HttpForm />
     </>
   );
 }
