@@ -1,6 +1,6 @@
 import React from 'react';
 import { WithCounter } from './withCounter';
-import styles from '../styles/appStyles.module.css';
+import styles from '../styles/app.module.css';
 
 type ClickCounterProps = {
   count: number;

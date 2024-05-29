@@ -1,4 +1,4 @@
-import styles from '../styles/appStyles.module.css';
+import styles from '../styles/app.module.css';
 
 type ErrorProneProps = { throwError: boolean };
 

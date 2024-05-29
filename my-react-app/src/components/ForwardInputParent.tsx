@@ -1,6 +1,6 @@
 import React from 'react';
 import { ForwardInput } from './ForwardInput';
-import styles from '../styles/appStyles.module.css';
+import styles from '../styles/app.module.css';
 
 type ForwardInputParentProps = {};
 

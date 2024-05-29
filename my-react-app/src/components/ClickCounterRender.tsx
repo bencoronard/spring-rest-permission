@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from '../styles/appStyles.module.css';
+import styles from '../styles/app.module.css';
 
 type ClickCounterRenderProps = {
   count: number;

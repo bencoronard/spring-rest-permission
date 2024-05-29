@@ -1,5 +1,5 @@
-import React, { ChangeEvent, Component } from "react";
-import styles from "../styles/appStyles.module.css";
+import React, { ChangeEvent, Component } from 'react';
+import styles from '../styles/app.module.css';
 
 type FormProps = {};
 type FormState = {
@@ -13,9 +13,9 @@ export class Form extends Component<FormProps, FormState> {
     super(props);
 
     this.state = {
-      username: "",
-      comments: "",
-      topic: "vue",
+      username: '',
+      comments: '',
+      topic: 'vue',
     };
   }
 
@@ -54,9 +54,9 @@ export class Form extends Component<FormProps, FormState> {
     event.preventDefault();
     this.setState(
       {
-        username: "",
-        comments: "",
-        topic: "react",
+        username: '',
+        comments: '',
+        topic: 'react',
       },
       () => {
         const formData: FormState = {

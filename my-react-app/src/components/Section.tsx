@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import styles from '../styles/appStyles.module.css';
+import styles from '../styles/app.module.css';
 
 type SectionProps = { title?: string; children: ReactNode };
 

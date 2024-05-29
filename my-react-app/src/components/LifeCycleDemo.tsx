@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/appStyles.module.css';
+import styles from '../styles/app.module.css';
 
 type LifeCycleDemoProps = { user: string };
 type LifeCycleDemoState = { message: string };
