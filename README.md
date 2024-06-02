@@ -1,106 +1,30 @@
-# CRUD API using Java Spring Boot
+# React + TypeScript + Vite
 
-This application exposes REST API endpoints to perform basic CRUD operations on relational databases. The theme centers around a Secret Intelligence Service (SIS) management system where users with different access levels can assign Missions to Agents.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Table of Contents
+Currently, two official plugins are available:
 
-- [Security](#security)
-- [Model](#model)
-- [API](#api-endpoints)
-- [Remarks](#remarks)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Security
-The application is secured with basic login authentication using "username" and "password", and authorization is based on the access level tied to the login credentials.
+## Expanding the ESLint configuration
 
-There are three access levels listed from lowest to highest:
- 1. `USER`: { username = "user", password = "1234" }
- 2. `ADMIN`: { username = "admin", password = "1234" }
- 3. `SUPERUSER`: { username = "superuser", password = "1234" }
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-Upon first accessing an API endpoint, the user will be presented with a login form. Enter one of the credentials listed above.
+- Configure the top-level `parserOptions` property like this:
 
-## Model
-There are two main entities in the application:
-- `Agent`{
-  - id: unique ID assigned by AgentRepository
-  - name: full name of agent
-  - alias: secret name used to identify agent
-  - missionId: ID of mission assigned to the agent }
-- `Mission`{
-  - id: unique ID assigned by MissionRepository
-  - name: name of mission
-  - status: status of mission—UNASSIGNED, ASSIGNED, COMPLETED}
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
 
-Based on their authority, users can fetch, update, and delete Agent and Mission records. Updating an Agent means assigning a Mission to them, and updating a Mission means changing its status.
-
-## API Endpoints
-
-- GET `/`
-  - Description: homepage
-  - Access: USER, ADMIN, SUPERUSER
-
-- GET `/h2-console`
-  - Description: database console for managing records
-  - Access: SUPERUSER
-
-- GET `/api/agents`
-  - Description: list all Agent records in database
-  - Access: ADMIN, SUPERUSER
-  - Response: list of Agent objects
-
-- GET `/api/missions`
-  - Description: list all Mission records in database
-  - Access: ADMIN, SUPERUSER
-  - Response: list of Mission objects
-
-- GET `/api/agent/{alias}`
-  - Description: fetch an Agent record based on its alias from database
-  - Access: ADMIN, SUPERUSER
-  - Input: String alias
-  - Response: Agent object
-
-- GET `/api/mission/{name}`
-  - Description: fetch a Mission record based on its name from database
-  - Access: USER, ADMIN, SUPERUSER
-  - Input: String name
-  - Response: Mission object
-
-- POST `/api/agent`
-  - Description: insert an Agent record to database
-  - Access: SUPERUSER
-  - Input: { name: String, alias: String}
-  - Response: HTTP OK
-
-- POST `/api/mission`
-  - Description: insert a Mission record to database
-  - Access: ADMIN, SUPERUSER
-  - Input: { name: String }
-  - Response: HTTP OK
-
-- PUT `/api/agent/{alias}/mission/{name}`
-  - Description: assign an Agent a Mission
-  - Access: ADMIN, SUPERUSER
-  - Input: String alias, String name
-  - Response: HTTP OK
-
-- PUT `/api/mission/{name}/status/{status}`
-  - Description: update Mission status
-  - Access: USER, ADMIN, SUPERUSER
-  - Input: String name, String{UNASSIGNED/ASSIGNED/COMPLETED} status
-  - Response: HTTP OK
-
-- DELETE `/api/agent/{alias}`
-  - Description: delete an Agent record based on its alias from database
-  - Access: SUPERUSER
-  - Input: String alias
-  - Response: HTTP OK
-
-- DELETE `/api/mission/{name}`
-  - Description: delete a Mission record based on its name from database
-  - Access: ADMIN, SUPERUSER
-  - Input: String name
-  - Response: HTTP OK
-
-## Remarks
-Due to time constraints, the API has not been thoroughly tested.
-
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
