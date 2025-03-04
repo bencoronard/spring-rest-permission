@@ -8,6 +8,6 @@ public interface ApiAccessRepository {
 
   String save(ApiAccess apiAccess);
 
-  Collection<String> findNamesById(Collection<String> ids);
+  Collection<String> findNameById(Collection<String> ids);
 
 }

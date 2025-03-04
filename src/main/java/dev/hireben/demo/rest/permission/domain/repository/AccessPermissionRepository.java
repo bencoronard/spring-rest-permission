@@ -10,7 +10,7 @@ public interface AccessPermissionRepository {
 
   Collection<String> findDistinctViewIdByRoleId(String roleId); // render navigation list items
 
-  Collection<String> findAllApiIdByRoleIdAndViewId(String roleId, String viewId); // authorize protected view access
+  Collection<String> findApiIdByRoleIdAndViewId(String roleId, String viewId); // authorize protected view access
 
   long countByRoleIdAndApiId(String roleId, String apiId); // authorize api access
 
