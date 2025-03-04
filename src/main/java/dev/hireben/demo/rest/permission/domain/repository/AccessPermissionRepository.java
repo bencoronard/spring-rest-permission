@@ -12,6 +12,6 @@ public interface AccessPermissionRepository {
 
   Collection<String> findApiIdByRoleIdAndViewId(String roleId, String viewId); // authorize protected view access
 
-  long countByRoleIdAndApiId(String roleId, String apiId); // authorize api access
+  boolean existsByRoleIdAndApiId(String roleId, String apiId); // authorize api access
 
 }
