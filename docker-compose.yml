@@ -1,5 +1,5 @@
 services:
-  resource:
+  permission:
     image: rest-permission:v1
     build:
       context: .
