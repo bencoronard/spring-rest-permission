@@ -1,9 +1,8 @@
 package dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.entity;
 
-import dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.model.AccessPermissionEntityId;
-import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Index;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,18 +15,18 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "permissions", schema = "public", indexes = {
-    @Index(name = "idx_role_id", columnList = "role_id"),
-    @Index(name = "idx_view_id", columnList = "view_id"),
-    @Index(name = "idx_api_id", columnList = "api_id")
-})
-public class AccessPermissionEntity {
+@Table(name = "permissions_view", schema = "public")
+public class ViewAccessEntity {
 
   // ---------------------------------------------------------------------------//
   // Fields
   // ---------------------------------------------------------------------------//
 
-  @EmbeddedId
-  private AccessPermissionEntityId id;
+  @Id
+  @Column(name = "id", updatable = false, nullable = false)
+  private String id;
+
+  @Column(name = "name", nullable = false)
+  private String name;
 
 }
