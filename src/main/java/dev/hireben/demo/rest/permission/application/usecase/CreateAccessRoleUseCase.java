@@ -12,7 +12,7 @@ public class CreateAccessRoleUseCase {
   // Dependencies
   // ---------------------------------------------------------------------------//
 
-  private AccessRoleRepository repository;
+  private final AccessRoleRepository repository;
 
   // ---------------------------------------------------------------------------//
   // Methods

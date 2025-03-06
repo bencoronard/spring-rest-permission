@@ -12,7 +12,7 @@ public class CreateAccessPermissionUseCase {
   // Dependencies
   // ---------------------------------------------------------------------------//
 
-  private AccessPermissionRepository repository;
+  private final AccessPermissionRepository repository;
 
   // ---------------------------------------------------------------------------//
   // Methods

@@ -12,7 +12,7 @@ public class CreateApiAccessUseCase {
   // Dependencies
   // ---------------------------------------------------------------------------//
 
-  private ApiAccessRepository repository;
+  private final ApiAccessRepository repository;
 
   // ---------------------------------------------------------------------------//
   // Methods

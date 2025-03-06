@@ -12,7 +12,7 @@ public class RetrieveApiAccessUseCase {
   // Dependencies
   // ---------------------------------------------------------------------------//
 
-  private ApiAccessRepository repository;
+  private final ApiAccessRepository repository;
 
   // ---------------------------------------------------------------------------//
   // Methods

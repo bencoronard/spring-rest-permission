@@ -12,7 +12,7 @@ public class CreateViewAccessUseCase {
   // Dependencies
   // ---------------------------------------------------------------------------//
 
-  private ViewAccessRepository repository;
+  private final ViewAccessRepository repository;
 
   // ---------------------------------------------------------------------------//
   // Methods
