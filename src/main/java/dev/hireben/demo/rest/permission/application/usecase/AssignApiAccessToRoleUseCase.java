@@ -1,9 +1,9 @@
 package dev.hireben.demo.rest.permission.application.usecase;
 
 import dev.hireben.demo.rest.permission.application.exception.NonExistentRolePermissionException;
+import dev.hireben.demo.rest.permission.application.repository.ApiAccessRepository;
+import dev.hireben.demo.rest.permission.application.repository.RolePermissionRepository;
 import dev.hireben.demo.rest.permission.application.exception.NonExistentApiAccessException;
-import dev.hireben.demo.rest.permission.application.port.RolePermissionRepository;
-import dev.hireben.demo.rest.permission.application.port.ApiAccessRepository;
 import dev.hireben.demo.rest.permission.domain.entity.RolePermission;
 import dev.hireben.demo.rest.permission.domain.entity.ApiAccess;
 import lombok.RequiredArgsConstructor;

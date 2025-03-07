@@ -3,9 +3,9 @@ package dev.hireben.demo.rest.permission.application.usecase;
 import java.util.Set;
 
 import dev.hireben.demo.rest.permission.application.exception.DuplicateRolePermissionException;
-import dev.hireben.demo.rest.permission.application.port.RolePermissionRepository;
-import dev.hireben.demo.rest.permission.application.port.ApiAccessRepository;
-import dev.hireben.demo.rest.permission.application.port.ViewAccessRepository;
+import dev.hireben.demo.rest.permission.application.repository.ApiAccessRepository;
+import dev.hireben.demo.rest.permission.application.repository.RolePermissionRepository;
+import dev.hireben.demo.rest.permission.application.repository.ViewAccessRepository;
 import dev.hireben.demo.rest.permission.domain.entity.RolePermission;
 import dev.hireben.demo.rest.permission.domain.entity.ApiAccess;
 import dev.hireben.demo.rest.permission.domain.entity.ViewAccess;
