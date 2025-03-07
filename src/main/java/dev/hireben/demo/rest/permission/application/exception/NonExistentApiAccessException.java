@@ -1,6 +1,8 @@
 package dev.hireben.demo.rest.permission.application.exception;
 
-public class NonExistentApiAccessException extends RuntimeException {
+import dev.hireben.demo.rest.permission.domain.exception.DomainException;
+
+public class NonExistentApiAccessException extends DomainException {
 
   // ---------------------------------------------------------------------------//
   // Constructors

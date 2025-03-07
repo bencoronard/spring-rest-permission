@@ -1,6 +1,8 @@
 package dev.hireben.demo.rest.permission.application.exception;
 
-public class DuplicateViewAccessException extends RuntimeException {
+import dev.hireben.demo.rest.permission.domain.exception.DomainException;
+
+public class DuplicateViewAccessException extends DomainException {
 
   // ---------------------------------------------------------------------------//
   // Constructors

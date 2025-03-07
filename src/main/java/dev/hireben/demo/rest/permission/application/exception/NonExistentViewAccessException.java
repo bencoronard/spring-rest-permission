@@ -1,6 +1,8 @@
 package dev.hireben.demo.rest.permission.application.exception;
 
-public class NonExistentViewAccessException extends RuntimeException {
+import dev.hireben.demo.rest.permission.domain.exception.DomainException;
+
+public class NonExistentViewAccessException extends DomainException {
 
   // ---------------------------------------------------------------------------//
   // Constructors
