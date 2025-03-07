@@ -15,8 +15,8 @@ public class AssignViewAccessToRoleUseCase {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final RolePermissionRepository roleRepository;
-  private final ViewAccessRepository viewPermissionRepository;
+  private final RolePermissionRepository rolePermissionRepository;
+  private final ViewAccessRepository viewAccessRepository;
 
   // ---------------------------------------------------------------------------//
   // Methods
@@ -24,15 +24,15 @@ public class AssignViewAccessToRoleUseCase {
 
   public void execute(String roleId, String viewId) {
 
-    RolePermission role = roleRepository.findById(roleId)
+    RolePermission role = rolePermissionRepository.findById(roleId)
         .orElseThrow(() -> new NonExistentRolePermissionException(String.format("Role %s not found", roleId)));
 
-    ViewAccess permission = viewPermissionRepository.findById(viewId)
+    ViewAccess permission = viewAccessRepository.findById(viewId)
         .orElseThrow(() -> new NonExistentViewAccessException(String.format("View permission %s not found", viewId)));
 
     role.getViewPermissions().add(permission);
 
-    roleRepository.save(role);
+    rolePermissionRepository.save(role);
   }
 
 }

@@ -15,8 +15,8 @@ public class AssignApiAccessToRoleUseCase {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final RolePermissionRepository roleRepository;
-  private final ApiAccessRepository apiPermissionRepository;
+  private final RolePermissionRepository rolePermissionRepository;
+  private final ApiAccessRepository apiAccessRepository;
 
   // ---------------------------------------------------------------------------//
   // Methods
@@ -24,15 +24,15 @@ public class AssignApiAccessToRoleUseCase {
 
   public void execute(String roleId, String apiId) {
 
-    RolePermission role = roleRepository.findById(roleId)
+    RolePermission role = rolePermissionRepository.findById(roleId)
         .orElseThrow(() -> new NonExistentRolePermissionException(String.format("Role %s not found", roleId)));
 
-    ApiAccess permission = apiPermissionRepository.findById(apiId)
+    ApiAccess permission = apiAccessRepository.findById(apiId)
         .orElseThrow(() -> new NonExistentApiAccessException(String.format("API permission %s not found", apiId)));
 
     role.getApiPermissions().add(permission);
 
-    roleRepository.save(role);
+    rolePermissionRepository.save(role);
   }
 
 }

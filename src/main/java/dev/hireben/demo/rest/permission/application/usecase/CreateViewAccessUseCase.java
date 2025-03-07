@@ -2,6 +2,7 @@ package dev.hireben.demo.rest.permission.application.usecase;
 
 import java.util.Set;
 
+import dev.hireben.demo.rest.permission.application.dto.CreateViewAccessDTO;
 import dev.hireben.demo.rest.permission.application.exception.DuplicateViewAccessException;
 import dev.hireben.demo.rest.permission.domain.entity.ApiAccess;
 import dev.hireben.demo.rest.permission.domain.entity.ViewAccess;
@@ -16,28 +17,28 @@ public class CreateViewAccessUseCase {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final ViewAccessRepository viewPermissionRepository;
-  private final ApiAccessRepository apiPermissionRepository;
+  private final ViewAccessRepository viewAccessRepository;
+  private final ApiAccessRepository apiAccessRepository;
 
   // ---------------------------------------------------------------------------//
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public void execute(String viewId, String viewToken, Set<String> apiIds) {
+  public void execute(CreateViewAccessDTO dto) {
 
-    Set<ApiAccess> associatedApis = apiPermissionRepository.findByIds(apiIds);
+    Set<ApiAccess> associatedApis = apiAccessRepository.findByIds(dto.getAssociatedApiIds());
 
-    if (viewPermissionRepository.existsById(viewId)) {
-      throw new DuplicateViewAccessException(String.format("View permission %s already exists", viewId));
+    if (viewAccessRepository.existsById(dto.getViewId())) {
+      throw new DuplicateViewAccessException(String.format("View permission %s already exists", dto.getViewId()));
     }
 
     ViewAccess newViewPermission = ViewAccess.builder()
-        .id(viewId)
-        .token(viewToken)
+        .id(dto.getViewId())
+        .token(dto.getViewToken())
         .associatedApis(associatedApis)
         .build();
 
-    viewPermissionRepository.save(newViewPermission);
+    viewAccessRepository.save(newViewPermission);
   }
 
 }

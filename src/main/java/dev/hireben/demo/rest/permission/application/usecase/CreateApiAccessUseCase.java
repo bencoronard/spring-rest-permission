@@ -1,5 +1,6 @@
 package dev.hireben.demo.rest.permission.application.usecase;
 
+import dev.hireben.demo.rest.permission.application.dto.CreateApiAccessDTO;
 import dev.hireben.demo.rest.permission.application.exception.DuplicateApiAccessException;
 import dev.hireben.demo.rest.permission.application.exception.NonExistentViewAccessException;
 import dev.hireben.demo.rest.permission.domain.entity.ApiAccess;
@@ -15,29 +16,30 @@ public class CreateApiAccessUseCase {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final ViewAccessRepository viewPermissionRepository;
-  private final ApiAccessRepository apiPermissionRepository;
+  private final ViewAccessRepository viewAccessRepository;
+  private final ApiAccessRepository apiAccessRepository;
 
   // ---------------------------------------------------------------------------//
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public void execute(String apiId, String apiToken, String viewId) {
+  public void execute(CreateApiAccessDTO dto) {
 
-    ViewAccess associatedView = viewPermissionRepository.findById(viewId)
-        .orElseThrow(() -> new NonExistentViewAccessException(String.format("View permission %s not found", viewId)));
+    ViewAccess associatedView = viewAccessRepository.findById(dto.getAssociatedViewId())
+        .orElseThrow(() -> new NonExistentViewAccessException(
+            String.format("View permission %s not found", dto.getAssociatedViewId())));
 
-    if (apiPermissionRepository.existsById(apiId)) {
-      throw new DuplicateApiAccessException(String.format("API permission %s already exists", apiId));
+    if (apiAccessRepository.existsById(dto.getApiId())) {
+      throw new DuplicateApiAccessException(String.format("API permission %s already exists", dto.getApiId()));
     }
 
     ApiAccess newApiPermission = ApiAccess.builder()
-        .id(apiId)
-        .token(apiToken)
+        .id(dto.getApiId())
+        .token(dto.getApiToken())
         .associatedView(associatedView)
         .build();
 
-    apiPermissionRepository.save(newApiPermission);
+    apiAccessRepository.save(newApiPermission);
   }
 
 }
