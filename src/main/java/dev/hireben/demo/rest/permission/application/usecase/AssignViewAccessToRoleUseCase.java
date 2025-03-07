@@ -25,10 +25,10 @@ public class AssignViewAccessToRoleUseCase {
   public void execute(String roleId, String viewId) {
 
     RolePermission role = roleRepository.findById(roleId)
-        .orElseThrow(() -> new NonExistentRolePermissionException("Role not found"));
+        .orElseThrow(() -> new NonExistentRolePermissionException(String.format("Role %s not found", roleId)));
 
     ViewAccess permission = viewPermissionRepository.findById(viewId)
-        .orElseThrow(() -> new NonExistentViewAccessException("View permission not found"));
+        .orElseThrow(() -> new NonExistentViewAccessException(String.format("View permission %s not found", viewId)));
 
     role.getViewPermissions().add(permission);
 

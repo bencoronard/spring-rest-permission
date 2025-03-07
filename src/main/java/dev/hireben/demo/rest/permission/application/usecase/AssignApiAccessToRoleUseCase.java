@@ -25,10 +25,10 @@ public class AssignApiAccessToRoleUseCase {
   public void execute(String roleId, String apiId) {
 
     RolePermission role = roleRepository.findById(roleId)
-        .orElseThrow(() -> new NonExistentRolePermissionException("Role not found"));
+        .orElseThrow(() -> new NonExistentRolePermissionException(String.format("Role %s not found", roleId)));
 
     ApiAccess permission = apiPermissionRepository.findById(apiId)
-        .orElseThrow(() -> new NonExistentApiAccessException("API permission not found"));
+        .orElseThrow(() -> new NonExistentApiAccessException(String.format("API permission %s not found", apiId)));
 
     role.getApiPermissions().add(permission);
 
