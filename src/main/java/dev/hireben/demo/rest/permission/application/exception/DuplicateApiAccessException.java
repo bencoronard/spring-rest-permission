@@ -1,12 +1,12 @@
 package dev.hireben.demo.rest.permission.application.exception;
 
-public class ViewAccessNotFoundException extends RuntimeException {
+public class DuplicateApiAccessException extends RuntimeException {
 
   // ---------------------------------------------------------------------------//
   // Constructors
   // ---------------------------------------------------------------------------//
 
-  public ViewAccessNotFoundException(String message) {
+  public DuplicateApiAccessException(String message) {
     super(message);
   }
 

@@ -1,12 +1,12 @@
 package dev.hireben.demo.rest.permission.application.exception;
 
-public class RolePermissionNotFoundException extends RuntimeException {
+public class DuplicateRolePermissionException extends RuntimeException {
 
   // ---------------------------------------------------------------------------//
   // Constructors
   // ---------------------------------------------------------------------------//
 
-  public RolePermissionNotFoundException(String message) {
+  public DuplicateRolePermissionException(String message) {
     super(message);
   }
 

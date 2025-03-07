@@ -1,12 +1,12 @@
 package dev.hireben.demo.rest.permission.application.exception;
 
-public class ViewAccessAlreadyExistsException extends RuntimeException {
+public class DuplicateViewAccessException extends RuntimeException {
 
   // ---------------------------------------------------------------------------//
   // Constructors
   // ---------------------------------------------------------------------------//
 
-  public ViewAccessAlreadyExistsException(String message) {
+  public DuplicateViewAccessException(String message) {
     super(message);
   }
 

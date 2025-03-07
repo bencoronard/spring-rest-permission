@@ -2,7 +2,7 @@ package dev.hireben.demo.rest.permission.application.usecase;
 
 import java.util.Set;
 
-import dev.hireben.demo.rest.permission.application.exception.ViewAccessAlreadyExistsException;
+import dev.hireben.demo.rest.permission.application.exception.DuplicateViewAccessException;
 import dev.hireben.demo.rest.permission.application.port.ApiAccessRepository;
 import dev.hireben.demo.rest.permission.application.port.ViewAccessRepository;
 import dev.hireben.demo.rest.permission.domain.entity.ApiAccess;
@@ -28,7 +28,7 @@ public class CreateViewAccessUseCase {
     Set<ApiAccess> associatedApis = apiPermissionRepository.findByIds(apiIds);
 
     if (viewPermissionRepository.existsById(viewId)) {
-      throw new ViewAccessAlreadyExistsException(String.format("View permission %s already exists", viewId));
+      throw new DuplicateViewAccessException(String.format("View permission %s already exists", viewId));
     }
 
     ViewAccess newViewPermission = ViewAccess.builder()

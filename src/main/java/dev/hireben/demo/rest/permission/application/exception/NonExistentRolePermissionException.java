@@ -1,12 +1,12 @@
 package dev.hireben.demo.rest.permission.application.exception;
 
-public class RolePermissionAlreadyExistsException extends RuntimeException {
+public class NonExistentRolePermissionException extends RuntimeException {
 
   // ---------------------------------------------------------------------------//
   // Constructors
   // ---------------------------------------------------------------------------//
 
-  public RolePermissionAlreadyExistsException(String message) {
+  public NonExistentRolePermissionException(String message) {
     super(message);
   }
 

@@ -1,7 +1,7 @@
 package dev.hireben.demo.rest.permission.application.usecase;
 
-import dev.hireben.demo.rest.permission.application.exception.RolePermissionNotFoundException;
-import dev.hireben.demo.rest.permission.application.exception.ApiAccessNotFoundException;
+import dev.hireben.demo.rest.permission.application.exception.NonExistentRolePermissionException;
+import dev.hireben.demo.rest.permission.application.exception.NonExistentApiAccessException;
 import dev.hireben.demo.rest.permission.application.port.RolePermissionRepository;
 import dev.hireben.demo.rest.permission.application.port.ApiAccessRepository;
 import dev.hireben.demo.rest.permission.domain.entity.RolePermission;
@@ -25,10 +25,10 @@ public class AssignApiAccessToRoleUseCase {
   public void execute(String roleId, String apiId) {
 
     RolePermission role = roleRepository.findById(roleId)
-        .orElseThrow(() -> new RolePermissionNotFoundException("Role not found"));
+        .orElseThrow(() -> new NonExistentRolePermissionException("Role not found"));
 
     ApiAccess permission = apiPermissionRepository.findById(apiId)
-        .orElseThrow(() -> new ApiAccessNotFoundException("API permission not found"));
+        .orElseThrow(() -> new NonExistentApiAccessException("API permission not found"));
 
     role.getApiPermissions().add(permission);
 

@@ -1,12 +1,12 @@
 package dev.hireben.demo.rest.permission.application.exception;
 
-public class ApiAccessAlreadyExistsException extends RuntimeException {
+public class NonExistentViewAccessException extends RuntimeException {
 
   // ---------------------------------------------------------------------------//
   // Constructors
   // ---------------------------------------------------------------------------//
 
-  public ApiAccessAlreadyExistsException(String message) {
+  public NonExistentViewAccessException(String message) {
     super(message);
   }
 

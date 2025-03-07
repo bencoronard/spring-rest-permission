@@ -2,7 +2,7 @@ package dev.hireben.demo.rest.permission.application.usecase;
 
 import java.util.Set;
 
-import dev.hireben.demo.rest.permission.application.exception.RolePermissionAlreadyExistsException;
+import dev.hireben.demo.rest.permission.application.exception.DuplicateRolePermissionException;
 import dev.hireben.demo.rest.permission.application.port.RolePermissionRepository;
 import dev.hireben.demo.rest.permission.application.port.ApiAccessRepository;
 import dev.hireben.demo.rest.permission.application.port.ViewAccessRepository;
@@ -29,7 +29,7 @@ public class CreateRolePermissionUseCase {
   public String execute(String roleId, Set<String> viewPermissionIds, Set<String> apiPermissionIds) {
 
     if (roleRepository.existsById(roleId)) {
-      throw new RolePermissionAlreadyExistsException(String.format("Role %s already exists", roleId));
+      throw new DuplicateRolePermissionException(String.format("Role %s already exists", roleId));
     }
 
     Set<ViewAccess> viewPermissions = viewPermissionRepository.findByIds(viewPermissionIds);

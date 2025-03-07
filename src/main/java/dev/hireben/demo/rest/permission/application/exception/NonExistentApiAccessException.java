@@ -1,12 +1,12 @@
 package dev.hireben.demo.rest.permission.application.exception;
 
-public class ApiAccessNotFoundException extends RuntimeException {
+public class NonExistentApiAccessException extends RuntimeException {
 
   // ---------------------------------------------------------------------------//
   // Constructors
   // ---------------------------------------------------------------------------//
 
-  public ApiAccessNotFoundException(String message) {
+  public NonExistentApiAccessException(String message) {
     super(message);
   }
 
