@@ -1,4 +1,4 @@
-package dev.hireben.demo.rest.permission.application.repository;
+package dev.hireben.demo.rest.permission.domain.repository;
 
 import java.util.Optional;
 
