@@ -2,19 +2,20 @@ package dev.hireben.demo.rest.permission.domain.entity;
 
 import java.util.Set;
 
-import lombok.Builder;
+import dev.hireben.demo.rest.permission.domain.entity.base.ResourceAccess;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.SuperBuilder;
 
 @Data
-@Builder
-public class ViewAccess {
+@SuperBuilder
+@EqualsAndHashCode(callSuper = true)
+public class ViewAccess extends ResourceAccess {
 
   // ---------------------------------------------------------------------------//
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final String name;
-  private final String token;
   private final Set<ApiAccess> linkedApis;
 
 }

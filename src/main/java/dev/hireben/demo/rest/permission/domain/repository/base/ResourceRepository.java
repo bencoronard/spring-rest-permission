@@ -1,10 +1,10 @@
-package dev.hireben.demo.rest.permission.domain.repository;
+package dev.hireben.demo.rest.permission.domain.repository.base;
 
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
-public interface DomainRepository<T> {
+public interface ResourceRepository<T> {
 
   String save(T entity);
 
