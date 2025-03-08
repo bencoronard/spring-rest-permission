@@ -1,10 +1,9 @@
 package dev.hireben.demo.rest.permission.application.usecase;
 
-import dev.hireben.demo.rest.permission.application.exception.NonExistentAccessRoleException;
-
 import java.util.Collection;
 import java.util.Set;
 
+import dev.hireben.demo.rest.permission.application.exception.NonExistentAccessRoleException;
 import dev.hireben.demo.rest.permission.domain.entity.AccessRole;
 import dev.hireben.demo.rest.permission.domain.repository.ApiAccessRepository;
 import dev.hireben.demo.rest.permission.domain.repository.AccessRoleRepository;
