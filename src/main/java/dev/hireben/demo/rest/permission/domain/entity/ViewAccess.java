@@ -15,6 +15,6 @@ public class ViewAccess {
 
   private final String name;
   private final String token;
-  private final Set<ApiAccess> accessibleApis;
+  private final Set<ApiAccess> linkedApis;
 
 }
