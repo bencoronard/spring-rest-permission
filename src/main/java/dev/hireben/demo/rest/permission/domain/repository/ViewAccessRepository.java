@@ -8,12 +8,12 @@ import dev.hireben.demo.rest.permission.domain.entity.ViewAccess;
 
 public interface ViewAccessRepository {
 
-  String save(ViewAccess permission);
+  String save(ViewAccess access);
 
-  Optional<ViewAccess> findById(String id);
+  Optional<ViewAccess> findByName(String name);
 
-  Set<ViewAccess> findByIds(Collection<String> ids);
+  Set<ViewAccess> findByNameIn(Collection<String> names);
 
-  boolean existsById(String id);
+  boolean existsByName(String name);
 
 }

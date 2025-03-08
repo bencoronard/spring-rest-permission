@@ -1,5 +1,7 @@
 package dev.hireben.demo.rest.permission.domain.entity;
 
+import java.util.Set;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,8 +13,8 @@ public class ApiAccess {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final String id;
+  private final String name;
   private final String token;
-  private final ViewAccess associatedView;
+  private final Set<ViewAccess> linkedViews;
 
 }

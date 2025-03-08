@@ -13,8 +13,8 @@ public class ViewAccess {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final String id;
+  private final String name;
   private final String token;
-  private final Set<ApiAccess> associatedApis;
+  private final Set<ApiAccess> accessibleApis;
 
 }

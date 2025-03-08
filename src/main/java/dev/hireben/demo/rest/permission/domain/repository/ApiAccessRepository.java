@@ -8,12 +8,12 @@ import dev.hireben.demo.rest.permission.domain.entity.ApiAccess;
 
 public interface ApiAccessRepository {
 
-  String save(ApiAccess permission);
+  String save(ApiAccess access);
 
-  Optional<ApiAccess> findById(String id);
+  Optional<ApiAccess> findByName(String name);
 
-  Set<ApiAccess> findByIds(Collection<String> ids);
+  Set<ApiAccess> findByNameIn(Collection<String> names);
 
-  boolean existsById(String id);
+  boolean existsByName(String name);
 
 }

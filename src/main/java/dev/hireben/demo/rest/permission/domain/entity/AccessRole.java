@@ -7,28 +7,28 @@ import lombok.Data;
 
 @Data
 @Builder
-public class RolePermission {
+public class AccessRole {
 
   // ---------------------------------------------------------------------------//
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final String id;
-  private final Set<ViewAccess> viewPermissions;
-  private final Set<ApiAccess> apiPermissions;
+  private final String name;
+  private final Set<ViewAccess> viewAccesses;
+  private final Set<ApiAccess> apiAccesses;
 
   // ---------------------------------------------------------------------------//
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public boolean hasViewPermission(String viewId) {
-    return viewPermissions.stream().anyMatch(permission -> permission.getId().equals(viewId));
+  public boolean hasViewAccess(String viewId) {
+    return viewAccesses.stream().anyMatch(permission -> permission.getName().equals(viewId));
   }
 
   // ---------------------------------------------------------------------------//
 
-  public boolean hasApiPermission(String apiId) {
-    return apiPermissions.stream().anyMatch(permission -> permission.getId().equals(apiId));
+  public boolean hasApiAccess(String apiId) {
+    return apiAccesses.stream().anyMatch(permission -> permission.getName().equals(apiId));
   }
 
 }
