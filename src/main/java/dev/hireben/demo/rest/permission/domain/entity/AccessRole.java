@@ -1,5 +1,6 @@
 package dev.hireben.demo.rest.permission.domain.entity;
 
+import java.util.Optional;
 import java.util.Set;
 
 import lombok.Builder;
@@ -21,8 +22,8 @@ public class AccessRole {
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public boolean hasViewAccess(String viewName) {
-    return viewAccesses.stream().anyMatch(permission -> permission.getName().equals(viewName));
+  public Optional<ViewAccess> hasViewAccess(String viewName) {
+    return viewAccesses.stream().filter(view -> view.getName().equals(viewName)).findFirst();
   }
 
   // ---------------------------------------------------------------------------//
