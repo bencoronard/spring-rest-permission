@@ -22,7 +22,7 @@ public class AccessRole {
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public Optional<ViewAccess> hasViewAccess(String viewName) {
+  public Optional<ViewAccess> getViewAccess(String viewName) {
     return viewAccesses.stream().filter(view -> view.getName().equals(viewName)).findFirst();
   }
 
