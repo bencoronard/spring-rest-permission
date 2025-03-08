@@ -11,7 +11,7 @@ public abstract class ResourceAccess {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final String name;
-  private final String token;
+  private String name;
+  private String token;
 
 }
