@@ -21,14 +21,14 @@ public class AccessRole {
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public boolean hasViewAccess(String viewId) {
-    return viewAccesses.stream().anyMatch(permission -> permission.getName().equals(viewId));
+  public boolean hasViewAccess(String viewName) {
+    return viewAccesses.stream().anyMatch(permission -> permission.getName().equals(viewName));
   }
 
   // ---------------------------------------------------------------------------//
 
-  public boolean hasApiAccess(String apiId) {
-    return apiAccesses.stream().anyMatch(permission -> permission.getName().equals(apiId));
+  public boolean hasApiAccess(String apiName) {
+    return apiAccesses.stream().anyMatch(permission -> permission.getName().equals(apiName));
   }
 
 }
