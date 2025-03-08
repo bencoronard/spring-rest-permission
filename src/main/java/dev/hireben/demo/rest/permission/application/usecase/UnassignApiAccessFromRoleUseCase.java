@@ -17,7 +17,7 @@ public class UnassignApiAccessFromRoleUseCase {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final AccessRoleRepository rolePermissionRepository;
+  private final AccessRoleRepository accessRoleRepository;
   private final ApiAccessRepository apiAccessRepository;
 
   // ---------------------------------------------------------------------------//
@@ -26,14 +26,14 @@ public class UnassignApiAccessFromRoleUseCase {
 
   public void execute(String roleName, Collection<String> apiNames) {
 
-    AccessRole role = rolePermissionRepository.findByName(roleName)
+    AccessRole role = accessRoleRepository.findByName(roleName)
         .orElseThrow(() -> new NonExistentAccessRoleException(String.format("Role %s not found", roleName)));
 
     Set<ApiAccess> accesses = apiAccessRepository.findByNameIn(apiNames);
 
     role.getApiAccesses().removeAll(accesses);
 
-    rolePermissionRepository.save(role);
+    accessRoleRepository.save(role);
   }
 
 }
