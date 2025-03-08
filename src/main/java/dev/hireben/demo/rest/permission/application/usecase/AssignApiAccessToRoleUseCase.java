@@ -1,10 +1,13 @@
 package dev.hireben.demo.rest.permission.application.usecase;
 
-import dev.hireben.demo.rest.permission.application.exception.NonExistentRolePermissionException;
-import dev.hireben.demo.rest.permission.application.exception.NonExistentApiAccessException;
-import dev.hireben.demo.rest.permission.domain.entity.RolePermission;
+import dev.hireben.demo.rest.permission.application.exception.NonExistentAccessRoleException;
+
+import java.util.Collection;
+import java.util.Set;
+
+import dev.hireben.demo.rest.permission.domain.entity.AccessRole;
 import dev.hireben.demo.rest.permission.domain.repository.ApiAccessRepository;
-import dev.hireben.demo.rest.permission.domain.repository.RolePermissionRepository;
+import dev.hireben.demo.rest.permission.domain.repository.AccessRoleRepository;
 import dev.hireben.demo.rest.permission.domain.entity.ApiAccess;
 import lombok.RequiredArgsConstructor;
 
@@ -15,22 +18,21 @@ public class AssignApiAccessToRoleUseCase {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final RolePermissionRepository rolePermissionRepository;
+  private final AccessRoleRepository rolePermissionRepository;
   private final ApiAccessRepository apiAccessRepository;
 
   // ---------------------------------------------------------------------------//
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public void execute(String roleId, String apiId) {
+  public void execute(String roleName, Collection<String> apiNames) {
 
-    RolePermission role = rolePermissionRepository.findById(roleId)
-        .orElseThrow(() -> new NonExistentRolePermissionException(String.format("Role %s not found", roleId)));
+    AccessRole role = rolePermissionRepository.findByName(roleName)
+        .orElseThrow(() -> new NonExistentAccessRoleException(String.format("Role %s not found", roleName)));
 
-    ApiAccess permission = apiAccessRepository.findById(apiId)
-        .orElseThrow(() -> new NonExistentApiAccessException(String.format("API permission %s not found", apiId)));
+    Set<ApiAccess> accesses = apiAccessRepository.findByNameIn(apiNames);
 
-    role.getApiPermissions().add(permission);
+    role.getApiAccesses().addAll(accesses);
 
     rolePermissionRepository.save(role);
   }

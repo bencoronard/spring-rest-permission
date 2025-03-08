@@ -13,8 +13,8 @@ public class CreateViewAccessDTO {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  String viewId;
+  String viewName;
   String viewToken;
-  Set<String> associatedApiIds;
+  Set<String> linkedApiNames;
 
 }

@@ -26,19 +26,19 @@ public class CreateViewAccessUseCase {
 
   public void execute(CreateViewAccessDTO dto) {
 
-    Set<ApiAccess> associatedApis = apiAccessRepository.findByIds(dto.getAssociatedApiIds());
-
-    if (viewAccessRepository.existsById(dto.getViewId())) {
-      throw new DuplicateViewAccessException(String.format("View permission %s already exists", dto.getViewId()));
+    if (viewAccessRepository.existsByName(dto.getViewName())) {
+      throw new DuplicateViewAccessException(String.format("View access %s already exists", dto.getViewName()));
     }
 
-    ViewAccess newViewPermission = ViewAccess.builder()
-        .id(dto.getViewId())
+    Set<ApiAccess> apiAccesses = apiAccessRepository.findByNameIn(dto.getLinkedApiNames());
+
+    ViewAccess newViewAccess = ViewAccess.builder()
+        .name(dto.getViewName())
         .token(dto.getViewToken())
-        .associatedApis(associatedApis)
+        .linkedApis(apiAccesses)
         .build();
 
-    viewAccessRepository.save(newViewPermission);
+    viewAccessRepository.save(newViewAccess);
   }
 
 }

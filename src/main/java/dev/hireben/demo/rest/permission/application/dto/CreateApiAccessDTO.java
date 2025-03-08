@@ -1,5 +1,7 @@
 package dev.hireben.demo.rest.permission.application.dto;
 
+import java.util.Set;
+
 import lombok.Builder;
 import lombok.Value;
 
@@ -11,8 +13,8 @@ public class CreateApiAccessDTO {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  String apiId;
+  String apiName;
   String apiToken;
-  String associatedViewId;
+  Set<String> linkedViewNames;
 
 }

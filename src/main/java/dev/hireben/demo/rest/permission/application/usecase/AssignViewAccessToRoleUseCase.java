@@ -1,10 +1,12 @@
 package dev.hireben.demo.rest.permission.application.usecase;
 
-import dev.hireben.demo.rest.permission.application.exception.NonExistentRolePermissionException;
-import dev.hireben.demo.rest.permission.application.exception.NonExistentViewAccessException;
-import dev.hireben.demo.rest.permission.domain.entity.RolePermission;
+import java.util.Collection;
+import java.util.Set;
+
+import dev.hireben.demo.rest.permission.application.exception.NonExistentAccessRoleException;
+import dev.hireben.demo.rest.permission.domain.entity.AccessRole;
 import dev.hireben.demo.rest.permission.domain.entity.ViewAccess;
-import dev.hireben.demo.rest.permission.domain.repository.RolePermissionRepository;
+import dev.hireben.demo.rest.permission.domain.repository.AccessRoleRepository;
 import dev.hireben.demo.rest.permission.domain.repository.ViewAccessRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -15,22 +17,21 @@ public class AssignViewAccessToRoleUseCase {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  private final RolePermissionRepository rolePermissionRepository;
+  private final AccessRoleRepository rolePermissionRepository;
   private final ViewAccessRepository viewAccessRepository;
 
   // ---------------------------------------------------------------------------//
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public void execute(String roleId, String viewId) {
+  public void execute(String roleName, Collection<String> viewNames) {
 
-    RolePermission role = rolePermissionRepository.findById(roleId)
-        .orElseThrow(() -> new NonExistentRolePermissionException(String.format("Role %s not found", roleId)));
+    AccessRole role = rolePermissionRepository.findByName(roleName)
+        .orElseThrow(() -> new NonExistentAccessRoleException(String.format("Role %s not found", roleName)));
 
-    ViewAccess permission = viewAccessRepository.findById(viewId)
-        .orElseThrow(() -> new NonExistentViewAccessException(String.format("View permission %s not found", viewId)));
+    Set<ViewAccess> accesses = viewAccessRepository.findByNameIn(viewNames);
 
-    role.getViewPermissions().add(permission);
+    role.getViewAccesses().addAll(accesses);
 
     rolePermissionRepository.save(role);
   }

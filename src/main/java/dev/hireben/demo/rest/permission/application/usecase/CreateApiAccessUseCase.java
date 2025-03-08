@@ -1,8 +1,9 @@
 package dev.hireben.demo.rest.permission.application.usecase;
 
+import java.util.Set;
+
 import dev.hireben.demo.rest.permission.application.dto.CreateApiAccessDTO;
 import dev.hireben.demo.rest.permission.application.exception.DuplicateApiAccessException;
-import dev.hireben.demo.rest.permission.application.exception.NonExistentViewAccessException;
 import dev.hireben.demo.rest.permission.domain.entity.ApiAccess;
 import dev.hireben.demo.rest.permission.domain.entity.ViewAccess;
 import dev.hireben.demo.rest.permission.domain.repository.ApiAccessRepository;
@@ -25,21 +26,19 @@ public class CreateApiAccessUseCase {
 
   public void execute(CreateApiAccessDTO dto) {
 
-    ViewAccess associatedView = viewAccessRepository.findById(dto.getAssociatedViewId())
-        .orElseThrow(() -> new NonExistentViewAccessException(
-            String.format("View permission %s not found", dto.getAssociatedViewId())));
-
-    if (apiAccessRepository.existsById(dto.getApiId())) {
-      throw new DuplicateApiAccessException(String.format("API permission %s already exists", dto.getApiId()));
+    if (apiAccessRepository.existsByName(dto.getApiName())) {
+      throw new DuplicateApiAccessException(String.format("API access %s already exists", dto.getApiName()));
     }
 
-    ApiAccess newApiPermission = ApiAccess.builder()
-        .id(dto.getApiId())
+    Set<ViewAccess> viewAccesses = viewAccessRepository.findByNameIn(dto.getLinkedViewNames());
+
+    ApiAccess newApiAccess = ApiAccess.builder()
+        .name(dto.getApiName())
         .token(dto.getApiToken())
-        .associatedView(associatedView)
+        .linkedViews(viewAccesses)
         .build();
 
-    apiAccessRepository.save(newApiPermission);
+    apiAccessRepository.save(newApiAccess);
   }
 
 }
