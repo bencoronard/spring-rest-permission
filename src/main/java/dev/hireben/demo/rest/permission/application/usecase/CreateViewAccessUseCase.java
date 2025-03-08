@@ -24,7 +24,7 @@ public class CreateViewAccessUseCase {
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public void execute(CreateViewAccessDTO dto) {
+  public String execute(CreateViewAccessDTO dto) {
 
     if (viewAccessRepository.existsByName(dto.getViewName())) {
       throw new DuplicateViewAccessException(String.format("View access %s already exists", dto.getViewName()));
@@ -38,7 +38,7 @@ public class CreateViewAccessUseCase {
         .linkedApis(apiAccesses)
         .build();
 
-    viewAccessRepository.save(newViewAccess);
+    return viewAccessRepository.save(newViewAccess);
   }
 
 }

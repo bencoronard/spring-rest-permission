@@ -1,12 +1,12 @@
-package dev.hireben.demo.rest.permission.domain.exception;
+package dev.hireben.demo.rest.permission.application.exception;
 
-public abstract class DomainException extends RuntimeException {
+public abstract class ApplicationException extends RuntimeException {
 
   // ---------------------------------------------------------------------------//
   // Constructors
   // ---------------------------------------------------------------------------//
 
-  protected DomainException(String message) {
+  protected ApplicationException(String message) {
     super(message);
   }
 

@@ -24,7 +24,7 @@ public class CreateApiAccessUseCase {
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public void execute(CreateApiAccessDTO dto) {
+  public String execute(CreateApiAccessDTO dto) {
 
     if (apiAccessRepository.existsByName(dto.getApiName())) {
       throw new DuplicateApiAccessException(String.format("API access %s already exists", dto.getApiName()));
@@ -38,7 +38,7 @@ public class CreateApiAccessUseCase {
         .linkedViews(viewAccesses)
         .build();
 
-    apiAccessRepository.save(newApiAccess);
+    return apiAccessRepository.save(newApiAccess);
   }
 
 }
