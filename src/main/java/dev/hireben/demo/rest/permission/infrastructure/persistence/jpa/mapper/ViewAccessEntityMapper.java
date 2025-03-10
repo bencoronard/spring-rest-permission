@@ -15,6 +15,7 @@ public class ViewAccessEntityMapper {
 
   public ViewAccessEntity toEntity(ViewAccess domain) {
     return ViewAccessEntity.builder()
+        .id(domain.getId())
         .name(domain.getName())
         .token(domain.getToken())
         .linkedApis(domain.getLinkedApis().stream()
@@ -27,6 +28,7 @@ public class ViewAccessEntityMapper {
 
   public ViewAccess toDomain(ViewAccessEntity entity) {
     return ViewAccess.builder()
+        .id(entity.getId())
         .name(entity.getName())
         .token(entity.getToken())
         .linkedApis(entity.getLinkedApis().stream()

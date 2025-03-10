@@ -14,6 +14,7 @@ public class AccessRole {
   // Fields
   // ---------------------------------------------------------------------------//
 
+  private final Long id;
   private final String name;
   private final Set<ViewAccess> viewAccesses;
   private final Set<ApiAccess> apiAccesses;

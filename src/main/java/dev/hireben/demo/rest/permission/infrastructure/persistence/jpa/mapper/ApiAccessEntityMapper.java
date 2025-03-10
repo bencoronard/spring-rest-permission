@@ -15,6 +15,7 @@ public class ApiAccessEntityMapper {
 
   public ApiAccessEntity toEntity(ApiAccess domain) {
     return ApiAccessEntity.builder()
+        .id(domain.getId())
         .name(domain.getName())
         .token(domain.getToken())
         .linkedViews(domain.getLinkedViews().stream()
@@ -27,6 +28,7 @@ public class ApiAccessEntityMapper {
 
   public ApiAccess toDomain(ApiAccessEntity entity) {
     return ApiAccess.builder()
+        .id(entity.getId())
         .name(entity.getName())
         .token(entity.getToken())
         .linkedViews(entity.getLinkedViews().stream()

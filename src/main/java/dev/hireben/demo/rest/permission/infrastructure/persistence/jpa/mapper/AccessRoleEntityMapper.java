@@ -15,6 +15,7 @@ public class AccessRoleEntityMapper {
 
   public AccessRoleEntity toEntity(AccessRole domain) {
     return AccessRoleEntity.builder()
+        .id(domain.getId())
         .name(domain.getName())
         .viewAccesses(domain.getViewAccesses().stream()
             .map(ViewAccessEntityMapper::toEntity)
@@ -29,6 +30,7 @@ public class AccessRoleEntityMapper {
 
   public AccessRole toDomain(AccessRoleEntity entity) {
     return AccessRole.builder()
+        .id(entity.getId())
         .name(entity.getName())
         .viewAccesses(entity.getViewAccesses().stream()
             .map(ViewAccessEntityMapper::toDomain)
