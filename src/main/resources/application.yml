@@ -19,7 +19,8 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: "validate"
+      ddl-auto: "create"
+      # ddl-auto: "validate"
   datasource:
     url: "jdbc:postgresql://${DEMO_DATABASE_POSTGRES_HOST:127.0.0.1}:${DEMO_DATABASE_POSTGRES_PORT:5432}/${DEMO_DATABASE_POSTGRES_DB:hireben-db}"
     driver-class-name: "org.postgresql.Driver"
