@@ -28,7 +28,7 @@ public class ApiAccessRepositoryJpa extends
 
   @Override
   protected String extractIdentifier(ApiAccessEntity entity) {
-    return entity.getPath();
+    return entity.getName();
   }
 
   // ---------------------------------------------------------------------------//

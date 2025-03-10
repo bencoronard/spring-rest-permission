@@ -24,7 +24,7 @@ public abstract class ResourceAccessEntity {
   private Long id;
 
   @Column(name = "path", nullable = false, unique = true)
-  private String path;
+  private String name;
 
   @Column(name = "token", nullable = false, unique = true)
   private String token;

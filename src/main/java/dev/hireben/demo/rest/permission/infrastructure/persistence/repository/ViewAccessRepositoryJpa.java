@@ -28,7 +28,7 @@ public class ViewAccessRepositoryJpa
 
   @Override
   protected String extractIdentifier(ViewAccessEntity entity) {
-    return entity.getPath();
+    return entity.getName();
   }
 
   // ---------------------------------------------------------------------------//

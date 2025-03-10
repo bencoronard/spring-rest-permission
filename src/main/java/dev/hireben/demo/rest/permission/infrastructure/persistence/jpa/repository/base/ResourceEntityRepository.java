@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+public interface ResourceEntityRepository<T, ID> {
 
-public interface ResourceEntityRepository<T, ID> extends JpaRepository<T, ID> {
+  T save(T entity);
 
   Optional<T> findByName(String name);
 
