@@ -1,5 +1,6 @@
 package dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.repository.base;
 
+import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
@@ -13,6 +14,6 @@ public interface ResourceEntityRepository<T, ID> extends JpaRepository<T, ID> {
 
   void deleteByName(String name);
 
-  Set<T> findByNameIn(Set<String> names);
+  Set<T> findByNameIn(Collection<String> names);
 
 }
