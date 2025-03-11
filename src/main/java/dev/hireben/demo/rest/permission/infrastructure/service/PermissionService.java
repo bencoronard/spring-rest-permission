@@ -33,7 +33,7 @@ public class PermissionService {
   // ---------------------------------------------------------------------------//
 
   public Set<String> checkViewAccessByRole(String roleName, String viewName) {
-    return checkViewAccessByRoleUseCase.execute(roleName, viewName).orElseGet(() -> Set.of());
+    return checkViewAccessByRoleUseCase.execute(roleName, viewName).orElse(Set.of());
   }
 
 }
