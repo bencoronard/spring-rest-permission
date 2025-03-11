@@ -26,14 +26,14 @@ public class PermissionService {
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public boolean checkApiAccessByRole(String roleName, String apiName) {
-    return checkApiAccessByRoleUseCase.execute(roleName, apiName);
+  public void checkApiAccessByRole(String roleName, String apiName) {
+    checkApiAccessByRoleUseCase.execute(roleName, apiName);
   }
 
   // ---------------------------------------------------------------------------//
 
   public Set<String> checkViewAccessByRole(String roleName, String viewName) {
-    return checkViewAccessByRoleUseCase.execute(roleName, viewName).orElse(Set.of());
+    return checkViewAccessByRoleUseCase.execute(roleName, viewName);
   }
 
 }
