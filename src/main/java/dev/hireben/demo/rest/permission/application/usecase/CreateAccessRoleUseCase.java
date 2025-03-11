@@ -2,7 +2,7 @@ package dev.hireben.demo.rest.permission.application.usecase;
 
 import java.util.Set;
 
-import dev.hireben.demo.rest.permission.application.dto.CreateRolePermissionDTO;
+import dev.hireben.demo.rest.permission.application.dto.CreateAccessRoleDTO;
 import dev.hireben.demo.rest.permission.application.exception.DuplicateAccessRoleException;
 import dev.hireben.demo.rest.permission.domain.entity.AccessRole;
 import dev.hireben.demo.rest.permission.domain.entity.ApiAccess;
@@ -27,7 +27,7 @@ public class CreateAccessRoleUseCase {
   // Methods
   // ---------------------------------------------------------------------------//
 
-  public String execute(CreateRolePermissionDTO dto) {
+  public String execute(CreateAccessRoleDTO dto) {
 
     if (accessRoleRepository.existsByName(dto.getRoleName())) {
       throw new DuplicateAccessRoleException(String.format("Role %s already exists", dto.getRoleName()));

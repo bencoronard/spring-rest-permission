@@ -7,7 +7,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class CreateRolePermissionDTO {
+public class CreateAccessRoleDTO {
 
   // ---------------------------------------------------------------------------//
   // Fields
