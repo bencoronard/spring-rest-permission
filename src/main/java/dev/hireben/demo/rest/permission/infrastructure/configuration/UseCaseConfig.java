@@ -31,6 +31,22 @@ public class UseCaseConfig {
   // ---------------------------------------------------------------------------//
 
   @Bean
+  CheckApiAccessByRoleUseCase checkApiAccessByRoleUseCase(
+      AccessRoleRepository accessRoleRepository) {
+    return new CheckApiAccessByRoleUseCase(accessRoleRepository);
+  }
+
+  // ---------------------------------------------------------------------------//
+
+  @Bean
+  CheckViewAccessByRoleUseCase checkViewAccessByRoleUseCase(
+      AccessRoleRepository accessRoleRepository) {
+    return new CheckViewAccessByRoleUseCase(accessRoleRepository);
+  }
+
+  // ---------------------------------------------------------------------------//
+
+  @Bean
   AssignApiAccessToRoleUseCase assignApiAccessToRoleUseCase(
       AccessRoleRepository accessRoleRepository,
       ApiAccessRepository apiAccessRepository) {
@@ -58,17 +74,28 @@ public class UseCaseConfig {
   // ---------------------------------------------------------------------------//
 
   @Bean
-  CheckApiAccessByRoleUseCase checkApiAccessByRoleUseCase(
-      AccessRoleRepository accessRoleRepository) {
-    return new CheckApiAccessByRoleUseCase(accessRoleRepository);
+  UnassignApiAccessFromRoleUseCase unassignApiAccessFromRoleUseCase(
+      AccessRoleRepository accessRoleRepository,
+      ApiAccessRepository apiAccessRepository) {
+    return new UnassignApiAccessFromRoleUseCase(accessRoleRepository, apiAccessRepository);
   }
 
   // ---------------------------------------------------------------------------//
 
   @Bean
-  CheckViewAccessByRoleUseCase checkViewAccessByRoleUseCase(
-      AccessRoleRepository accessRoleRepository) {
-    return new CheckViewAccessByRoleUseCase(accessRoleRepository);
+  UnassignApiAccessFromViewUseCase unassignApiAccessFromViewUseCase(
+      ViewAccessRepository viewAccessRepository,
+      ApiAccessRepository apiAccessRepository) {
+    return new UnassignApiAccessFromViewUseCase(viewAccessRepository, apiAccessRepository);
+  }
+
+  // ---------------------------------------------------------------------------//
+
+  @Bean
+  UnassignViewAccessFromRoleUseCase unassignViewAccessFromRoleUseCase(
+      AccessRoleRepository accessRoleRepository,
+      ViewAccessRepository viewAccessRepository) {
+    return new UnassignViewAccessFromRoleUseCase(accessRoleRepository, viewAccessRepository);
   }
 
   // ---------------------------------------------------------------------------//
@@ -102,6 +129,22 @@ public class UseCaseConfig {
   // ---------------------------------------------------------------------------//
 
   @Bean
+  UpdateApiAccessUseCase updateApiAccessUseCase(
+      ApiAccessRepository apiAccessRepository) {
+    return new UpdateApiAccessUseCase(apiAccessRepository);
+  }
+
+  // ---------------------------------------------------------------------------//
+
+  @Bean
+  UpdateViewAccessUseCase updateViewAccessUseCase(
+      ViewAccessRepository viewAccessRepository) {
+    return new UpdateViewAccessUseCase(viewAccessRepository);
+  }
+
+  // ---------------------------------------------------------------------------//
+
+  @Bean
   DeleteAccessRoleUseCase deleteAccessRoleUseCase(
       AccessRoleRepository accessRoleRepository) {
     return new DeleteAccessRoleUseCase(accessRoleRepository);
@@ -121,49 +164,6 @@ public class UseCaseConfig {
   DeleteViewAccessUseCase deleteViewAccessUseCase(
       ViewAccessRepository viewAccessRepository) {
     return new DeleteViewAccessUseCase(viewAccessRepository);
-  }
-
-  // ---------------------------------------------------------------------------//
-
-  @Bean
-  UnassignApiAccessFromRoleUseCase unassignApiAccessFromRoleUseCase(
-      AccessRoleRepository accessRoleRepository,
-      ApiAccessRepository apiAccessRepository) {
-    return new UnassignApiAccessFromRoleUseCase(accessRoleRepository, apiAccessRepository);
-  }
-
-  // ---------------------------------------------------------------------------//
-
-  @Bean
-  UnassignApiAccessFromViewUseCase unassignApiAccessFromViewUseCase(
-      ViewAccessRepository viewAccessRepository,
-      ApiAccessRepository apiAccessRepository) {
-    return new UnassignApiAccessFromViewUseCase(viewAccessRepository, apiAccessRepository);
-  }
-
-  // ---------------------------------------------------------------------------//
-
-  @Bean
-  UnassignViewAccessFromRoleUseCase unassignViewAccessFromRoleUseCase(
-      AccessRoleRepository accessRoleRepository,
-      ViewAccessRepository viewAccessRepository) {
-    return new UnassignViewAccessFromRoleUseCase(accessRoleRepository, viewAccessRepository);
-  }
-
-  // ---------------------------------------------------------------------------//
-
-  @Bean
-  UpdateApiAccessUseCase updateApiAccessUseCase(
-      ApiAccessRepository apiAccessRepository) {
-    return new UpdateApiAccessUseCase(apiAccessRepository);
-  }
-
-  // ---------------------------------------------------------------------------//
-
-  @Bean
-  UpdateViewAccessUseCase updateViewAccessUseCase(
-      ViewAccessRepository viewAccessRepository) {
-    return new UpdateViewAccessUseCase(viewAccessRepository);
   }
 
 }
