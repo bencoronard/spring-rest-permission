@@ -1,5 +1,6 @@
 package dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.entity.base.ResourceAccessEntity;
@@ -11,7 +12,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.Builder.Default;
 import lombok.experimental.SuperBuilder;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 
@@ -28,8 +31,9 @@ public class ViewAccessEntity extends ResourceAccessEntity {
   // Fields
   // ---------------------------------------------------------------------------//
 
-  @ManyToMany
+  @Default
+  @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(name = "view_api_links", joinColumns = @JoinColumn(name = "view_id"), inverseJoinColumns = @JoinColumn(name = "api_id"))
-  private Set<ApiAccessEntity> linkedApis;
+  private Set<ApiAccessEntity> linkedApis = new HashSet<>();
 
 }
