@@ -1,9 +1,12 @@
 package dev.hireben.demo.rest.permission.presentation.controller;
 
+import java.util.Collection;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,14 +25,11 @@ import dev.hireben.demo.rest.permission.presentation.dto.UpdateViewAccessRequest
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/v1/permissions")
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-@SuppressWarnings("unused")
 public class PermissionManagementControllerV1 {
 
   // ---------------------------------------------------------------------------//
@@ -42,43 +42,73 @@ public class PermissionManagementControllerV1 {
   // Methods
   // ---------------------------------------------------------------------------//
 
+  @PutMapping("/roles/{roleName}/apis/assign")
   public ResponseEntity<Void> assignApiPermissionsToRole(
-      @PathVariable String roleName) {
+      @PathVariable String roleName,
+      @RequestBody Collection<String> apiNames) {
+
+    permissionManagementService.assignApiAccessToRole(roleName, apiNames);
+
     return ResponseEntity.ok().build();
   }
 
   // ---------------------------------------------------------------------------//
 
+  @PutMapping("/roles/{roleName}/views/assign")
   public ResponseEntity<Void> assignViewPermissionsToRole(
-      @PathVariable String roleName) {
+      @PathVariable String roleName,
+      @RequestBody Collection<String> viewNames) {
+
+    permissionManagementService.assignViewAccessToRole(roleName, viewNames);
+
     return ResponseEntity.ok().build();
   }
 
   // ---------------------------------------------------------------------------//
 
+  @PutMapping("/views/{viewName}/apis/assign")
   public ResponseEntity<Void> assignApiPermissionsToView(
-      @PathVariable String viewName) {
+      @PathVariable String viewName,
+      @RequestBody Collection<String> apiNames) {
+
+    permissionManagementService.assignApiAccessToView(viewName, apiNames);
+
     return ResponseEntity.ok().build();
   }
 
   // ---------------------------------------------------------------------------//
 
+  @PutMapping("/roles/{roleName}/apis/unassign")
   public ResponseEntity<Void> unassignApiPermissionsFromRole(
-      @PathVariable String roleName) {
+      @PathVariable String roleName,
+      @RequestBody Collection<String> apiNames) {
+
+    permissionManagementService.unassignApiAccessFromRole(roleName, apiNames);
+
     return ResponseEntity.ok().build();
   }
 
   // ---------------------------------------------------------------------------//
 
+  @PutMapping("/roles/{roleName}/views/unassign")
   public ResponseEntity<Void> unassignViewPermissionsFromRole(
-      @PathVariable String roleName) {
+      @PathVariable String roleName,
+      @RequestBody Collection<String> viewNames) {
+
+    permissionManagementService.unassignViewAccessFromRole(roleName, viewNames);
+
     return ResponseEntity.ok().build();
   }
 
   // ---------------------------------------------------------------------------//
 
+  @PutMapping("/views/{viewName}/apis/unassign")
   public ResponseEntity<Void> unassignApiPermissionsFromView(
-      @PathVariable String viewName) {
+      @PathVariable String viewName,
+      @RequestBody Collection<String> apiNames) {
+
+    permissionManagementService.unassignApiAccessFromView(viewName, apiNames);
+
     return ResponseEntity.ok().build();
   }
 
