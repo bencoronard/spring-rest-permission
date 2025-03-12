@@ -1,7 +1,6 @@
 package dev.hireben.demo.rest.permission.application.dto;
 
-import java.util.Set;
-
+import java.util.Collection;
 import lombok.Builder;
 import lombok.Value;
 
@@ -15,6 +14,6 @@ public class CreateApiAccessDTO {
 
   String apiName;
   String apiToken;
-  Set<String> linkedViewNames;
+  Collection<String> linkedViewNames;
 
 }

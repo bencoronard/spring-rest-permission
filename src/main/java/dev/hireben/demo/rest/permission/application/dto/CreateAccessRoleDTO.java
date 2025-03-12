@@ -1,7 +1,6 @@
 package dev.hireben.demo.rest.permission.application.dto;
 
-import java.util.Set;
-
+import java.util.Collection;
 import lombok.Builder;
 import lombok.Value;
 
@@ -14,7 +13,7 @@ public class CreateAccessRoleDTO {
   // ---------------------------------------------------------------------------//
 
   String roleName;
-  Set<String> viewNames;
-  Set<String> apiNames;
+  Collection<String> viewNames;
+  Collection<String> apiNames;
 
 }
