@@ -33,7 +33,7 @@ public class PermissionControllerV1 {
 
     permissionService.checkApiAccessByRole(roleName, apiName);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.noContent().build();
   }
 
   // ---------------------------------------------------------------------------//
