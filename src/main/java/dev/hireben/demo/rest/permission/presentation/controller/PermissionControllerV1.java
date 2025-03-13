@@ -43,7 +43,9 @@ public class PermissionControllerV1 {
       @PathVariable String roleName,
       @PathVariable String viewName) {
 
-    return ResponseEntity.ok(permissionService.checkViewAccessByRole(roleName, viewName));
+    Collection<String> permissionTokens = permissionService.checkViewAccessByRole(roleName, viewName);
+
+    return ResponseEntity.ok(permissionTokens);
   }
 
 }

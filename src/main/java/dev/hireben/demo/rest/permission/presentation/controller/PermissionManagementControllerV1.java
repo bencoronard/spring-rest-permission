@@ -1,5 +1,6 @@
 package dev.hireben.demo.rest.permission.presentation.controller;
 
+import java.net.URI;
 import java.util.Collection;
 
 import org.springframework.http.ResponseEntity;
@@ -49,7 +50,7 @@ public class PermissionManagementControllerV1 {
 
     permissionManagementService.assignApiAccessToRole(roleName, apiNames);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.noContent().build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -61,7 +62,7 @@ public class PermissionManagementControllerV1 {
 
     permissionManagementService.assignViewAccessToRole(roleName, viewNames);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.noContent().build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -73,7 +74,7 @@ public class PermissionManagementControllerV1 {
 
     permissionManagementService.assignApiAccessToView(viewName, apiNames);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.noContent().build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -85,7 +86,7 @@ public class PermissionManagementControllerV1 {
 
     permissionManagementService.unassignApiAccessFromRole(roleName, apiNames);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.noContent().build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -97,7 +98,7 @@ public class PermissionManagementControllerV1 {
 
     permissionManagementService.unassignViewAccessFromRole(roleName, viewNames);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.noContent().build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -109,7 +110,7 @@ public class PermissionManagementControllerV1 {
 
     permissionManagementService.unassignApiAccessFromView(viewName, apiNames);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.noContent().build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -124,9 +125,9 @@ public class PermissionManagementControllerV1 {
         .viewNames(body.viewNames())
         .build();
 
-    permissionManagementService.createAccessRole(dto);
+    String roleName = permissionManagementService.createAccessRole(dto);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.created(URI.create(roleName)).build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -141,9 +142,9 @@ public class PermissionManagementControllerV1 {
         .linkedViewNames(body.linkedViewNames())
         .build();
 
-    permissionManagementService.createApiAccess(dto);
+    String apiName = permissionManagementService.createApiAccess(dto);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.created(URI.create(apiName)).build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -158,9 +159,9 @@ public class PermissionManagementControllerV1 {
         .linkedApiNames(body.linkedApiNames())
         .build();
 
-    permissionManagementService.createViewAccess(dto);
+    String viewName = permissionManagementService.createViewAccess(dto);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.created(URI.create(viewName)).build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -177,7 +178,7 @@ public class PermissionManagementControllerV1 {
 
     permissionManagementService.updateApiAccess(apiName, dto);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.noContent().build();
   }
 
   // ---------------------------------------------------------------------------//
@@ -194,7 +195,7 @@ public class PermissionManagementControllerV1 {
 
     permissionManagementService.updateViewAccess(viewName, dto);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.noContent().build();
   }
 
   // ---------------------------------------------------------------------------//
