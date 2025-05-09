@@ -11,7 +11,7 @@ import dev.hireben.demo.rest.permission.infrastructure.persistence.repository.ba
 
 @Repository
 public class ApiAccessRepositoryJpa extends
-    ResourceRepositoryJpa<ApiAccessEntity, ApiAccess, ApiAccessEntityRepository>
+    ResourceRepositoryJpa<ApiAccessEntity, ApiAccess, Long, ApiAccessEntityRepository>
     implements ApiAccessRepository {
 
   // ---------------------------------------------------------------------------//
