@@ -11,7 +11,7 @@ import dev.hireben.demo.rest.permission.infrastructure.persistence.repository.ba
 
 @Repository
 public class AccessRoleRepositoryJpa
-    extends ResourceRepositoryJpa<AccessRoleEntity, AccessRole, Long, AccessRoleEntityRepository>
+    extends ResourceRepositoryJpa<AccessRoleEntity, AccessRole, AccessRoleEntityRepository>
     implements AccessRoleRepository {
 
   // ---------------------------------------------------------------------------//

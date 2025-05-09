@@ -11,7 +11,7 @@ import dev.hireben.demo.rest.permission.infrastructure.persistence.repository.ba
 
 @Repository
 public class ViewAccessRepositoryJpa
-    extends ResourceRepositoryJpa<ViewAccessEntity, ViewAccess, Long, ViewAccessEntityRepository>
+    extends ResourceRepositoryJpa<ViewAccessEntity, ViewAccess, ViewAccessEntityRepository>
     implements ViewAccessRepository {
 
   // ---------------------------------------------------------------------------//

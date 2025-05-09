@@ -6,5 +6,5 @@ import dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.entity.Ac
 import dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.repository.base.ResourceEntityRepository;
 
 public interface AccessRoleEntityRepository
-    extends ResourceEntityRepository<AccessRoleEntity, Long>, JpaRepository<AccessRoleEntity, Long> {
+    extends ResourceEntityRepository<AccessRoleEntity>, JpaRepository<AccessRoleEntity, Long> {
 }

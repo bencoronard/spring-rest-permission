@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
-public interface ResourceEntityRepository<T, ID> {
+public interface ResourceEntityRepository<T> {
 
   T save(T entity);
 

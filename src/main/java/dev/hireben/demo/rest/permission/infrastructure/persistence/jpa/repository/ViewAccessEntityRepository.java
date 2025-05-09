@@ -6,5 +6,5 @@ import dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.entity.Vi
 import dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.repository.base.ResourceEntityRepository;
 
 public interface ViewAccessEntityRepository
-    extends ResourceEntityRepository<ViewAccessEntity, Long>, JpaRepository<ViewAccessEntity, Long> {
+    extends ResourceEntityRepository<ViewAccessEntity>, JpaRepository<ViewAccessEntity, Long> {
 }

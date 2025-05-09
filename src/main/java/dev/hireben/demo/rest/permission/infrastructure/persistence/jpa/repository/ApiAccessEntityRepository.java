@@ -6,5 +6,5 @@ import dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.entity.Ap
 import dev.hireben.demo.rest.permission.infrastructure.persistence.jpa.repository.base.ResourceEntityRepository;
 
 public interface ApiAccessEntityRepository
-    extends ResourceEntityRepository<ApiAccessEntity, Long>, JpaRepository<ApiAccessEntity, Long> {
+    extends ResourceEntityRepository<ApiAccessEntity>, JpaRepository<ApiAccessEntity, Long> {
 }

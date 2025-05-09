@@ -11,7 +11,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-public abstract class ResourceRepositoryJpa<T, D, ID, R extends ResourceEntityRepository<T, ID>>
+public abstract class ResourceRepositoryJpa<T, D, R extends ResourceEntityRepository<T>>
     implements ResourceRepository<D> {
 
   // ---------------------------------------------------------------------------//
